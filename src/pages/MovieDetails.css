@@ -1,0 +1,114 @@
+/* Container for the full page */
+.movie-details-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f0f0f0;
+  background-color: #121212;
+}
+
+/* Card holding poster and details */
+.movie-details-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* Poster styling */
+.movie-details-poster {
+  width: 100%;
+  max-width: 350px;
+  object-fit: cover;
+  border-right: 2px solid #333;
+}
+
+/* Right-side info */
+.movie-details-info {
+  flex: 1;
+  padding: 20px;
+}
+
+.movie-details-info h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #ffd700;
+}
+
+.movie-details-info p {
+  margin: 10px 0;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Description paragraph */
+.movie-details-description {
+  margin-top: 20px;
+  font-size: 17px;
+  font-style: italic;
+  color: #ccc;
+}
+
+/* Embedded trailer */
+.movie-player-wrapper {
+  margin-top: 40px;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.03);
+}
+
+.movie-player-wrapper h3 {
+  color: #ff6161;
+  margin-bottom: 10px;
+}
+
+.movie-player {
+  width: 100%;
+  height: 450px;
+  border-radius: 10px;
+}
+
+/* Error message style */
+.movie-details-error {
+  text-align: center;
+  padding: 80px 20px;
+  color: #ff4d4d;
+  font-size: 18px;
+}
+
+.back-button {
+  margin-top: 20px;
+  background-color: #ff6161;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #e84545;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .movie-details-card {
+    flex-direction: column;
+  }
+
+  .movie-details-poster {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #333;
+  }
+
+  .movie-player {
+    height: 250px;
+  }
+}

@@ -1,0 +1,126 @@
+/* === Base === */
+.dashboard-container {
+  background-color: #141414;
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* === Card Style Box === */
+.dashboard-header {
+  background-color: #1f1f1f;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* === Profile Picture === */
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e50914;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+
+/* === User Info === */
+.dashboard-header h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.dashboard-header p {
+  font-size: 1rem;
+  color: #bbb;
+}
+
+/* === Edit Form === */
+.edit-form input[type="text"],
+.edit-form input[type="email"],
+.edit-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #333;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.edit-form input[type="file"] {
+  background-color: #222;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.edit-form button {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  margin: 8px 6px;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-form button:hover {
+  background-color: #f40612;
+}
+
+/* === Action Buttons (Edit/Logout) === */
+.dashboard-actions {
+  margin-top: 20px;
+}
+
+.dashboard-actions button {
+  background-color: transparent;
+  border: 2px solid #e50914;
+  color: #e50914;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dashboard-actions button:hover {
+  background-color: #e50914;
+  color: #fff;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .dashboard-header {
+    padding: 20px;
+  }
+
+  .profile-pic {
+    width: 90px;
+    height: 90px;
+  }
+
+  .edit-form input,
+  .edit-form button {
+    font-size: 0.9rem;
+  }
+}
+.secondary-button{
+  margin:20px;
+}

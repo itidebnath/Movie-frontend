@@ -1,0 +1,120 @@
+/* === Reset and Base Styles === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #141414;
+  color: #fff;
+}
+
+/* === Container === */
+.movies-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.movies-container h2 {
+  font-size: 2rem;
+  color: #e50914;
+  border-left: 6px solid #e50914;
+  padding-left: 14px;
+  margin-bottom: 30px;
+}
+
+/* === Movie Grid === */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+/* === Movie Card === */
+.movie-card {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.movie-card:hover {
+  transform: scale(1.07);
+  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
+  z-index: 5;
+}
+
+/* === Poster Image === */
+.movie-poster {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-poster {
+  transform: scale(1.03);
+}
+
+/* === Movie Title === */
+.movie-card h4 {
+  padding: 12px 10px 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* === Watch Now Button === */
+.movie-card a {
+  display: inline-block;
+  background-color: #e50914;
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+  margin: 0 10px 14px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.movie-card a:hover {
+  background-color: #f40612;
+}
+
+/* === No Movies Found Message === */
+.movies-container p {
+  font-size: 1.1rem;
+  color: #bbb;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .movies-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .movie-poster {
+    height: 220px;
+  }
+
+  .movie-card a {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}

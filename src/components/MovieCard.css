@@ -1,0 +1,38 @@
+.movie-card {
+  width: 180px;
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  margin: 1rem;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.movie-info {
+  padding: 0.7rem;
+}
+
+.movie-title {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  
+}
+
+.movie-release,
+.movie-rating {
+  font-size: 0.85rem;
+  color: #bbb;
+}
