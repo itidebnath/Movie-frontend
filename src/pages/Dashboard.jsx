@@ -20,14 +20,14 @@ const Dashboard = ({ user, onEditProfile, onLogout }) => {
   const [previewURL, setPreviewURL] = useState(
     user?.photo?.startsWith("http")
       ? user.photo
-      : `http://moviesite-production-c144.up.railway.app/${user?.photo || ""}` // ✅ fixed here
+      : `https://movie-site-0zcr.onrender.com/${user?.photo || ""}` // ✅ fixed here
   );
 
   useEffect(() => {
     if (user?.photo) {
       const newPreviewURL = user.photo.startsWith("http")
         ? user.photo
-        : `http://moviesite-production-c144.up.railway.app/${user.photo}`; // ✅ fixed here
+        : `https://movie-site-0zcr.onrender.com/${user.photo}`; // ✅ fixed here
       setPreviewURL(newPreviewURL);
     }
   }, [user]);
