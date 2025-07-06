@@ -12,6 +12,7 @@ import AdminUserListPage from './pages/AdminUserListPage';
 const App = () => {
   const [user, setUser] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+
   // Load user from localStorage when app loads
   useEffect(() => {
     const storedUser = localStorage.getItem("userInfo");
@@ -46,9 +47,10 @@ const App = () => {
         onLogout={handleLogout}
         setSearchTerm={setSearchTerm}
       />
-      
+
       <Routes>
-        <Route path="/" element={<Home onLoginSuccess={handleLoginSuccess} />} />
+        {/* ⛔ Removed login check prop */}
+        <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies searchTerm={searchTerm} />} />
         <Route path="/movies/:id" element={<MovieDetails />} />
         <Route
@@ -63,6 +65,7 @@ const App = () => {
         />
         <Route path="/admin/users" element={<AdminUserListPage />} />
       </Routes>
+
       <Footer />
     </Router>
   );

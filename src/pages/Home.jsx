@@ -1,55 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { getAllMovies } from '../services/movieService';
-import LoginModal from "../components/LoginModal";
 import './Home.css';
 
-const Home = ({ onLoginSuccess }) => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const [playingTrailerId, setPlayingTrailerId] = useState(null);
-  const [showLogin, setShowLogin] = useState(false);
-  const [user, setUser] = useState(null); // for managing logged-in user
 
-  // Fetch movies only when user is logged in
-  const fetchMovies = async () => {
-    try {
-      const res = await getAllMovies();
-      console.log("Fetched movies:", res);
-      setMovies(res);
-    } catch (error) {
-      console.error('Error fetching movies:', error);
-    }
-  };
-
+  // ✅ Fetch movies immediately without login check
   useEffect(() => {
-    const storedUser = localStorage.getItem("userInfo");
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setUser(parsedUser);
-      setShowLogin(false);
-      fetchMovies(); // ✅ fetch only if logged in
-    } else {
-      setShowLogin(true);
-    }
-  }, []);
+    const fetchMovies = async () => {
+      try {
+        const res = await getAllMovies();
+        console.log("Fetched movies:", res);
+        setMovies(res);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
+    };
 
-  // Handle login success from LoginModal
-  const handleLoginSuccess = (userData) => {
-    setUser(userData);
-    localStorage.setItem("userInfo", JSON.stringify(userData));
-    setShowLogin(false);
-    if (onLoginSuccess) onLoginSuccess(userData);
-    fetchMovies(); // ✅ fetch after login
-  };
+    fetchMovies();
+  }, []);
 
   const getYouTubeId = (url) => {
     const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/);
     return match ? match[1] : null;
   };
-
-  // ✅ Show login modal if not logged in
-  if (showLogin) {
-    return <LoginModal onLoginSuccess={handleLoginSuccess} />;
-  }
 
   return (
     <div className="home-page">
