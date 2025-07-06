@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://movie-site-0zcr.onrender.com/api",
+  baseURL: "https://moviesite-production-c144.up.railway.app/api",
 });
 
 // ✅ Add token automatically to headers
