@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ProtectedRoute from "./components/ProtectedRoute";
+
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import MovieDetails from "./pages/MovieDetails";
@@ -46,48 +46,22 @@ const App = () => {
         onLogout={handleLogout}
         setSearchTerm={setSearchTerm}
       />
-
+      
       <Routes>
-        {/* Public route: Login & Signup through Home */}
         <Route path="/" element={<Home onLoginSuccess={handleLoginSuccess} />} />
-
-        {/* Protected routes */}
-        <Route
-          path="/movies"
-          element={
-            <ProtectedRoute user={user}>
-              <Movies />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/movies/:id"
-          element={
-            <ProtectedRoute user={user}>
-              <MovieDetails />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/movies" element={<Movies searchTerm={searchTerm} />} />
+        <Route path="/movies/:id" element={<MovieDetails />} />
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute user={user}>
-              <Dashboard
-                user={user}
-                onLogout={handleLogout}
-                onEditProfile={handleProfileUpdate}
-              />
-            </ProtectedRoute>
+            <Dashboard
+              user={user}
+              onLogout={handleLogout}
+              onEditProfile={handleProfileUpdate}
+            />
           }
         />
-        <Route
-          path="/admin/users"
-          element={
-            <ProtectedRoute user={user}>
-              <AdminUserListPage />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/admin/users" element={<AdminUserListPage />} />
       </Routes>
       <Footer />
     </Router>

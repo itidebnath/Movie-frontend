@@ -7,8 +7,9 @@ const Home = ({ onLoginSuccess }) => {
   const [movies, setMovies] = useState([]);
   const [playingTrailerId, setPlayingTrailerId] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // for managing logged-in user
 
+  // Fetch movies only when user is logged in
   const fetchMovies = async () => {
     try {
       const res = await getAllMovies();
@@ -22,29 +23,30 @@ const Home = ({ onLoginSuccess }) => {
   useEffect(() => {
     const storedUser = localStorage.getItem("userInfo");
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      const parsedUser = JSON.parse(storedUser);
+      setUser(parsedUser);
       setShowLogin(false);
+      fetchMovies(); // ✅ fetch only if logged in
     } else {
-      setShowLogin(true); // show login modal
+      setShowLogin(true);
     }
   }, []);
 
-  useEffect(() => {
-  if (user) {
-    fetchMovies();
-  }
-}, [user]); // <== now this runs after login
-
- const handleLoginSuccess = (userData) => {
-    onLoginSuccess(userData); // update user at App.js
-    setUser(userData);        // update local state
-    setShowLogin(false);      // ✅ hide the modal
+  // Handle login success from LoginModal
+  const handleLoginSuccess = (userData) => {
+    setUser(userData);
+    localStorage.setItem("userInfo", JSON.stringify(userData));
+    setShowLogin(false);
+    if (onLoginSuccess) onLoginSuccess(userData);
+    fetchMovies(); // ✅ fetch after login
   };
+
   const getYouTubeId = (url) => {
     const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/);
     return match ? match[1] : null;
   };
 
+  // ✅ Show login modal if not logged in
   if (showLogin) {
     return <LoginModal onLoginSuccess={handleLoginSuccess} />;
   }
@@ -52,7 +54,7 @@ const Home = ({ onLoginSuccess }) => {
   return (
     <div className="home-page">
       <section className="home-hero">
-        <h1 className="home-title">Welcome to Bongovia 🎬</h1>
+        <h1 className="home-title">Welcome to MovieFlix 🎬</h1>
         <p className="home-subtitle">Watch the latest and trending movies, all hand-picked for you!</p>
         <button 
           className="home-browse-button"
